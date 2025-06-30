@@ -329,7 +329,7 @@
     };
 
     var SignOut = function () {
-        window.location.href = '/Auth/SignOut';
+        window.location.href = '/LocalAuth/SignOutLocal';
     }
 
     var GetJSONDG = function () {
@@ -861,16 +861,7 @@
                 case "Sign In":
                     {
                         if (!hasSignedIn) {
-                            var loginWindow = window.open('/Auth/SignIn', '_blank');
-                            setTimeout(function checkClosed() {
-                                try {
-                                    if (loginWindow.closed) {
-                                        TryEstablishSession();
-                                    } else {
-                                        setTimeout(checkClosed, 500);
-                                    }
-                                } catch (e) { }
-                            }, 500);
+                            window.location.href = '/LocalAuth/SignIn';
                         } else {
                             SignOut();
                         }
